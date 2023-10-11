@@ -1,0 +1,111 @@
+<!-- 
+  Developer Name  : Shelake Kalyani Rajendra
+  Program Name    : Create a survey form with Fields; First Name, Last Name, Date of Birth,Country (dropdown), Gender (checkbox), Profession, email, and mobile number. All the input fields are necessary to submit the form. Create two buttons Submit and Reset. Reset will
+    reset the form while clicking on submit, first, it will check all the fields and necessary
+    validations and then a popup will appear displaying all the selected values with labels in
+    front of it. On closing the popup, the form should reset all the values.
+  Developed Date  : 11-10-2023
+  Technology Used : HTML,CSS and JavaScript
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        form{
+            background-color: lightyellow;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="surveyForm">
+        <center> <h1>Survey Form</h1></center>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required><br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required><br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" required>
+            <option value="">Select Country</option>
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="uk">UK</option>
+            <!-- Add more countries as needed -->
+        </select><br><br>
+
+        <label>Gender:</label>
+        <label for="male"><input type="checkbox" id="male" name="gender" value="Male"> Male</label>
+        <label for="female"><input type="checkbox" id="female" name="gender" value="Female"> Female</label>
+        <label for="other"><input type="checkbox" id="other" name="gender" value="Other"> Other</label><br><br>
+
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" required><br><br>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+        <button type="button" onclick="resetForm()">Reset</button>
+    </form>
+
+    <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border: 2px solid #000;">
+        <h2>Survey Results</h2>
+        <div id="results"></div>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        function submitForm() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const dob = document.getElementById('dob').value;
+            const country = document.getElementById('country').value;
+            const gender = Array.from(document.getElementsByName('gender')).filter(cb => cb.checked).map(cb => cb.value).join(', ');
+            const profession = document.getElementById('profession').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <p><strong>First Name:</strong> ${firstName}</p>
+                <p><strong>Last Name:</strong> ${lastName}</p>
+                <p><strong>Date of Birth:</strong> ${dob}</p>
+                <p><strong>Country:</strong> ${country}</p>
+                <p><strong>Gender:</strong> ${gender}</p>
+                <p><strong>Profession:</strong> ${profession}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Mobile Number:</strong> ${mobile}</p>
+            `;
+
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function resetForm() {
+            document.getElementById('surveyForm').reset();
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            resetForm();
+        }
+    </script>
+</body>
+</html>

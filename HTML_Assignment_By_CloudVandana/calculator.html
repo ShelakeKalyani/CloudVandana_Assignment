@@ -1,0 +1,117 @@
+<!-- 
+  Developer Name  : Shelake Kalyani Rajendra
+  Program Name    : Create a basic calculator using HTML, CSS, and JavaScript with the    functionality of add, subtract, multiply and divide.
+  Developed Date  : 11-10-2023
+  Technology Used : HTML,CSS and JavaScript
+ -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculator</title>
+  <style type="text/css">
+    
+    .box{
+      width: 300px;
+      height: 530px;
+      margin: auto;
+      box-shadow: 0px 0px 3px 3px black;
+      background-color: black;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    .box input{
+      background-color: gray;
+      color: white;
+      height: 50px;
+      width: 90%;
+      margin: 10px;
+      margin-bottom: 0px;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+    .btn_des{
+      background-color: gray;
+      color: white;
+      height: 68px;
+      width: 57px;
+      border-radius: 5px;
+      margin-left: 10px;
+      margin-top: 5px;
+      font-size: 18px;
+    }
+    .clr{
+      width: 90%;
+      height: 50px;
+      background-color: gray;
+      color: white;
+      margin: 10px;
+      margin-top: 15px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1><center>Calculator</center></h1>
+  <div class="box">
+     
+    <input type="text" id="inp_box"><br><br>
+    <button onclick="addtext('1')" class="btn_des" style="margin-left: 13px;">1</button>
+    <button onclick="addtext('2')" class="btn_des">2</button>
+    <button onclick="addtext('3')" class="btn_des">3</button>
+    <button onclick="addtext('+')" class="btn_des">+</button><br><br>
+    <button onclick="addtext('4')" class="btn_des" style="margin-left: 13px;">4</button>
+    <button onclick="addtext('5')" class="btn_des">5</button>
+    <button onclick="addtext('6')" class="btn_des">6</button>
+    <button onclick="addtext('-')" class="btn_des">-</button><br><br>
+    <button onclick="addtext('7')" class="btn_des" style="margin-left: 13px;">7</button>
+    <button onclick="addtext('8')" class="btn_des">8</button>
+    <button onclick="addtext('9')" class="btn_des">9</button>
+    <button onclick="addtext('*')" class="btn_des">*</button><br><br>
+    <button onclick="addtext('/')" class="btn_des" style="margin-left: 13px;">/</button>
+    <button onclick="addtext('0')" class="btn_des">0</button>
+    <button onclick="addtext('.')" class="btn_des">.</button>
+    <button onclick="showResult()" class="btn_des">=</button>
+    <button class="clr" onclick="clear_all()" id="clr_txt" style="background-color:#129688">Clear All</button>
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+    var lastkey = " ";
+    function addtext(txt)
+    {
+        var currentkey = txt;
+        if((lastkey=="+" && currentkey=="+") || (lastkey=="-" && currentkey=="-") || (lastkey=="*" && currentkey=="*") || (lastkey=="*" && currentkey=="*") || (lastkey=="." && currentkey=="."))
+        {
+
+        }
+
+        else
+        {
+             document.getElementById('inp_box').value += txt;
+        }
+        lastkey = currentkey;
+    }
+
+    function showResult()
+    {
+        var inp = document.getElementById('inp_box');
+        var res = eval(inp.value);
+        inp.value = res;
+    }
+
+    function clear_all()
+    {
+        document.getElementById('inp_box').value = " ";
+    }
+  </script>
+
+
+</body>
+</html>
