@@ -1,0 +1,29 @@
+<!-- 
+	Developer Name  : Shelake Kalyani Rajendra
+	Program Name    : Take a sentence as an input and reverse every word in that sentence.
+						Example - This is a sunny day > shiT si a ynnus yad.
+	Developed Date  : 11-10-2023
+	Technology Used : HTML and JavaScript
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Reverse In Word</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function reverseWords(sentence) {
+    return sentence.split(' ').map(word => word.split('').reverse().join('')).join(' ');
+}
+
+
+const inputSentence = "This is a sunny day";
+const reversedSentence = reverseWords(inputSentence);
+console.log(reversedSentence); 
+
+	</script>
+</body>
+</html>
